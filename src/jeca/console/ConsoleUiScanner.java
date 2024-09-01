@@ -1,4 +1,4 @@
-package console;
+package jeca.console;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;

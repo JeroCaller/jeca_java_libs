@@ -1,9 +1,10 @@
-package any;
+package jeca.any;
 import java.util.Random;
 import java.util.ArrayList;
 
 /**
- * 랜덤 관련 도구 모음 클래스
+ * 랜덤 관련 도구 모음 유틸리티 클래스
+ * (객체 생성 방지해놓음)
  * 
  * <div>
  * 제작자 정보
@@ -20,6 +21,11 @@ import java.util.ArrayList;
  */
 public class CustomRandom {
 	static Random rand = new Random();
+	
+	/**
+	 * 유틸리티로 사용할 것이므로 객체 생성 방지.
+	 */
+	private CustomRandom() {}
 	
 	/**
 	 * 정해진 범위 내 정수들 중 일부를 무작위로 뽑아 배열로 반환.
@@ -46,7 +52,7 @@ public class CustomRandom {
 	 * @return int[]
 	 */
 	public static int[] getRandomNumsNoDup(int len, int startNum, int endNum) {
-		 ArrayList alNums = CustomRandom.getArrayNtoM(startNum, endNum);
+		 ArrayList<Integer> alNums = CustomRandom.getArrayNtoM(startNum, endNum);
 
 		 if (endNum - startNum + 1 < len) {
 			 len = endNum - startNum + 1;
@@ -68,8 +74,8 @@ public class CustomRandom {
 	 * @param m
 	 * @return ArrayList
 	 */
-	public static ArrayList getArrayNtoM(int n, int m) {
-		ArrayList intArr = new ArrayList();
+	public static ArrayList<Integer> getArrayNtoM(int n, int m) {
+		ArrayList<Integer> intArr = new ArrayList<Integer>();
 		
 		for (int i = n; i <= m; i++) {
 			intArr.add(i);

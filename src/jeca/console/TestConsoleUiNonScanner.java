@@ -1,10 +1,11 @@
-package console;
+package jeca.console;
+import java.io.IOException;
 
-public class TestConsoleUiScanner {
+public class TestConsoleUiNonScanner {
 
-	public static void main(String[] args) {
-		ConsoleUiScanner console = new ConsoleUiScanner();
-		console.registerExitChar("x", true);
+	public static void main(String[] args) throws IOException {
+		ConsoleUiNonScanner console = new ConsoleUiNonScanner();
+		console.registerExitChar('x', true);
 		
 		while(true) {
 			System.out.println("=== 메뉴 선택 ===");
@@ -12,28 +13,27 @@ public class TestConsoleUiScanner {
 			System.out.println("2. 설정");
 			System.out.println("3. 종료");
 			System.out.println("x 입력 시 프로그램 종료.");
-			console.requestUserInput();
+			console.requestUserInput("1~3번 중 택일: ");
 			if (console.isExitChar("프로그램 종료.")) return;
-			if (!console.convertStringToInt() || 
-					!console.isInRange(1, 3)) {
+			if (!console.isInRange('1', '3')) {
 				System.out.println("1, 2, 3중 하나를 입력하세요.");
 				continue;
 			}
 			
-			switch (console.getUserInputInt()) {
-				case 1:
+			switch (console.getUserInputInChar()) {
+				case '1':
 					System.out.println("1. 실행. 을 선택하셨습니다.");
 					break;
-				case 2:
+				case '2':
 					System.out.println("2. 설정. 을 선택하셨습니다.");
 					console.printNewLine();
-				
+					
 					console.requestUserInput("y/n: ");
 					if(!console.isInYesOrNo()) {
 						System.out.println("y 또는 n 중에 하나만 택했어야 했습니다.");
 						continue;
 					}
-				
+					
 					System.out.print("당신의 답: ");
 					if (console.getYesNoIntoBool()) {
 						System.out.println("Yes");
@@ -41,7 +41,7 @@ public class TestConsoleUiScanner {
 						System.out.println("no");
 					}
 					break;
-				case 3:
+				case '3':
 					System.out.println("3. 종료. 를 선택하셨습니다.");
 					break;
 				default:

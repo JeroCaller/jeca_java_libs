@@ -1,4 +1,4 @@
-package console;
+package jeca.console;
 
 import java.io.IOException;
 
