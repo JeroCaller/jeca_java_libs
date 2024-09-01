@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"jeca.any"},{"l":"jeca.console"}];updateSearchResults();
